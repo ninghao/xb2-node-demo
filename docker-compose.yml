@@ -21,6 +21,6 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      # - ./db:/var/lib/mysql
+      - ./db:/var/lib/mysql
       # 初始化数据库数据
       - ./assets/sql:/docker-entrypoint-initdb.d

@@ -1,0 +1,26 @@
+services:
+  node:
+    image: 'ninghao/xb2-node:latest'
+    container_name: 'xb2-node__node'
+    restart: always
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    volumes:
+      - ./uploads:/mnt/uploads
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0.30
+    container_name: 'xb2-node__mysql'
+    restart: always
+    ports:
+      - '${MYSQL_LOCAL_PORT}:3306'
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      # - ./db:/var/lib/mysql
+      # 初始化数据库数据
+      - ./assets/sql:/docker-entrypoint-initdb.d

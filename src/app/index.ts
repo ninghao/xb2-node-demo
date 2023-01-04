@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 import postRouter from '../post/post.router';
 import userRouter from '../user/user.router';
 import authRouter from '../auth/auth.router';
@@ -17,6 +18,11 @@ import { ALLOW_ORIGIN } from './app.config';
  * 创建应用
  */
 const app = express();
+
+/**
+ * 日志
+ */
+app.use(morgan('tiny'));
 
 /**
  * 处理 JSON

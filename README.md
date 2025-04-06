@@ -29,6 +29,8 @@ docker-compose up -d
 
 ## 开发
 
+如果你发现 node 容器没办法启动，可以基于项目 Dockerfile 这个文件自己编译一个 image，执行的命令就是 docker build，用 --tag 选项给这个容器起个名字，比如 ninghao/xb2-node，你可以把这个名字换成自己的，比如 zhangsan/xb2-node。编译成功以后，你可以修改 docker-compose.yaml 文件，将 node 容器的 image 替换成你自己的，比如 zhangsan/xb2-node。
+
 ```
 docker build --tag ninghao/xb2-node .
 docker push ninghao/xb2-node:latest
